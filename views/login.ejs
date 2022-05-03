@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    <meta name="robots" content="noindex, follow" />
+  </head>
+  <body>
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100 p-t-50 p-b-90">
+          <form
+            class="login100-form validate-form flex-sb flex-w"
+            action="/login"
+            method="POST"
+          >
+            <span class="login100-form-title p-b-51"> Login </span>
+            <div class="alert">
+              <% for (let i =0; i <message.length; i++) { %> <%= message[i] %> <% } %>
+            </div>
+            <div
+              class="wrap-input100 validate-input m-b-16"
+              data-validate="Username is required"
+            >
+              <input
+                class="input100"
+                type="text"
+                name="username"
+                placeholder="Username"
+                autocomplete="off"
+                for="username"
+                id="username"
+              />
+              <span class="focus-input100"></span>
+            </div>
+            <div
+              class="wrap-input100 validate-input m-b-16"
+              data-validate="Password is required"
+            >
+              <input
+                class="input100"
+                type="password"
+                name="password"
+                placeholder="Password"
+                for="password"
+                autocomplete="off"
+                id="password"
+              />
+              <span class="focus-input100"></span>
+            </div>
+            <div class="flex-sb-m w-full p-t-3 p-b-24">
+              <div class="contact100-form-checkbox">
+                <input
+                  class="input-checkbox100"
+                  id="ckb1"
+                  type="checkbox"
+                  name="remember-me"
+                />
+                <label class="label-checkbox100" for="ckb1">
+                  Remember me
+                </label>
+              </div>
+              <div>
+                <p class="txt5">
+                  Don't have an account?<a href="/register" class="txt1"
+                    >Sign Up
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="container-login100-form-btn m-t-17">
+              <a
+                href="index"
+                style="text-decoration: none; color: white"
+                class="login100-form-btn"
+              >
+                <button class="" type="submit">LOGIN</button></a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="dropDownSelect1"></div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
