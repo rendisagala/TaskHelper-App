@@ -34,35 +34,34 @@ let controller = {
       console.log(error);
     }
   },
-  login: async (req, res, next) => {
+  login: async (req, res) => {
     try {
       const username = req.body.username;
       const password = req.body.password;
 
-      const getUsername = await User.findOne(
-        {
-          username: username,
-        },
-        (err, result) => {
-          if (err) res.send("WRONG USERNAME");
+      const getUsername = await User.findOne({
+        username: username,
+      }).clone();
+      if (getUsername) {
+        const match = bcrypt.compareSync(password, getUsername.password);
+        if (!match) {
+          req.flash("error", "username or password incorrect");
+          res.redirect("/login");
+        } else {
+          const token = jwt.sign(
+            {
+              exp: Math.floor(Date.now() / 1000) + 60 * 60,
+              username: getUsername.username,
+            },
+            process.env.SECRET_TOKEN
+          );
+          res.header("auth-token", token);
+          req.flash("success", "You are logged in.");
+          console.log(`LOGGED IN`);
         }
-      ).clone();
-      const match = bcrypt.compareSync(password, getUsername.password);
-      if (!match) {
+      } else {
         req.flash("error", "username or password incorrect");
         res.redirect("/login");
-      } else {
-        const token = jwt.sign(
-          {
-            exp: Math.floor(Date.now() / 1000) + 60 * 60,
-            username: getUsername.username,
-          },
-          process.env.SECRET_TOKEN
-        );
-        res.header("auth-token", token);
-        console.log("Login Succes!!");
-        console.log(token);
-        next();
       }
     } catch (error) {
       res.redirect("/login");
@@ -73,7 +72,10 @@ let controller = {
     res.redirect("/login");
   },
   showLogin: (req, res) => {
-    res.render("login", { message: req.flash("error") });
+    res.render("login", {
+      error: req.flash("error"),
+      success: req.flash("success"),
+    });
   },
   showIndex: (req, res) => {
     res.render("index");
