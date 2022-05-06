@@ -12,8 +12,10 @@ db.on("error", (error) => {
 const taskSchema = new mongoose.Schema({
   task: {
     type: String,
+    trim: true,
   },
   done: {
     type: Boolean,
+    default: false,
   },
 });

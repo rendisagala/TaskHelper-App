@@ -1,10 +1,13 @@
 const User = require("../models/users");
-const verifyToken = require("../middleware/verifyToken");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const validation = require("../middleware/validation");
+const {
+  validation,
+  usernameExist,
+  emailExist,
+} = require("../middleware/validation");
 
 let controller = {
   register: async (req, res) => {
@@ -13,23 +16,37 @@ let controller = {
       const username = req.body.username;
       const password = req.body.password;
       // validate
-      const { error } = validation(req.body);
-      if (error) return console.log(error);
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      const inputUser = new User({
-        id: uuidv4(),
-        email: req.body.email,
-        username: req.body.username,
-        password: hashedPassword,
-        created: Date.now().toString(),
-      });
-      inputUser.save((err, user) => {
-        if (err) {
-          return res.redirect("/register");
-        }
-        console.log(user);
-        return res.redirect("/login");
-      });
+      const { error } = await validation(req.body);
+
+      const userExist = await User.find({ username: username });
+      const emailExist = await User.find({ email: email });
+      if (error) {
+        req.flash("usernameError", error.details[0].message);
+        res.redirect("/register");
+      } else if (emailExist.length > 0) {
+        req.flash("emailError", "Email already exist");
+        res.redirect("/register");
+      } else if (userExist.length > 0) {
+        req.flash("usernameError", "Username already exist");
+        res.redirect("/register");
+      } else {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        const inputUser = new User({
+          id: uuidv4(),
+          email: req.body.email,
+          username: req.body.username,
+          password: hashedPassword,
+          created: Date.now().toString(),
+        });
+        inputUser.save((err, user) => {
+          if (err) {
+            return res.redirect("/register");
+          }
+          console.log(user);
+          return res.redirect("/login");
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +62,7 @@ let controller = {
       if (getUsername) {
         const match = bcrypt.compareSync(password, getUsername.password);
         if (!match) {
-          req.flash("error", "username or password incorrect");
+          req.flash("error", "Username or password incorrect");
           res.redirect("/login");
         } else {
           const token = jwt.sign(
@@ -57,10 +74,11 @@ let controller = {
           );
           res.header("auth-token", token);
           req.flash("success", "You are logged in.");
+
           console.log(`LOGGED IN`);
         }
       } else {
-        req.flash("error", "username or password incorrect");
+        req.flash("error", "Username or password incorrect");
         res.redirect("/login");
       }
     } catch (error) {
@@ -81,7 +99,11 @@ let controller = {
     res.render("index");
   },
   showRegister: (req, res) => {
-    res.render("register");
+    res.render("register", {
+      usernameError: req.flash("usernameError"),
+      emailError: req.flash("emailError"),
+      validateError: req.flash("validateError"),
+    });
   },
 };
 

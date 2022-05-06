@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const User = require("../models/users");
 
 const validation = (data) => {
   const schema = Joi.object({
@@ -7,7 +8,8 @@ const validation = (data) => {
     email: Joi.string().email().required(),
     created: Joi.date(),
   });
-  return schema.validate(data);
+  const validationResult = schema.validate(data);
+  return validationResult;
 };
 
-module.exports = validation;
+module.exports = { validation };
