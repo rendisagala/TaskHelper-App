@@ -4,45 +4,128 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task List 2021</title>
-
-    <link rel="stylesheet" href="css/index.css" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    />
+    <style></style>
   </head>
   <body>
-    <header>
-      <h1>Task List 2021</h1>
-      <form id="new-task-form">
-        <input
-          type="text"
-          name="new-task-input"
-          id="new-task-input"
-          placeholder="What do you have planned?"
-        />
-        <input type="submit" id="new-task-submit" value="Add task" />
+    <nav class="navbar navbar-light" style="background-color: #eee">
+      <span class="navbar-brand mb-0 h1">TaskHelper by RAS</span>
+      <form class="form-inline" method="PUT" action="/logout">
+        <button class="btn btn-outline-success" type="submit">Log Out</button>
       </form>
-    </header>
-    <main>
-      <section class="task-list">
-        <h2>Tasks</h2>
+    </nav>
+    <section class="vh-100 full-height" style="background-color: #eee">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-9 col-xl-7">
+            <div class="card rounded-3">
+              <div class="card-body p-4">
+                <h4 class="text-center my-3 pb-3">To Do App</h4>
 
-        <div id="tasks">
-          <!-- <div class="task">
-					<div class="content">
-						<input 
-							type="text" 
-							class="text" 
-							value="A new task"
-							readonly>
-					</div>
-					<div class="actions">
-						<button class="edit">Edit</button>
-						<button class="delete">Delete</button>
-					</div>
-				</div> -->
+                <form
+                  class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2"
+                >
+                  <div class="col-12">
+                    <div class="form-outline">
+                      <input type="text" id="form1" class="form-control" />
+                      <label class="form-label" for="form1"
+                        >Enter a task here</label
+                      >
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary mb-lg-4">
+                      Save
+                    </button>
+                  </div>
+
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-warning mb-lg-4">
+                      Get tasks
+                    </button>
+                  </div>
+                </form>
+
+                <table class="table mb-4">
+                  <thead>
+                    <tr>
+                      <th scope="col">No.</th>
+                      <th scope="col">Todo item</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Buy groceries for next week</td>
+                      <td>In progress</td>
+                      <td>
+                        <button type="submit" class="btn btn-danger">
+                          Delete
+                        </button>
+                        <button type="submit" class="btn btn-success ms-1">
+                          Finished
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Renew car insurance</td>
+                      <td>In progress</td>
+                      <td>
+                        <button type="submit" class="btn btn-danger">
+                          Delete
+                        </button>
+                        <button type="submit" class="btn btn-success ms-1">
+                          Finished
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Sign up for online course</td>
+                      <td>In progress</td>
+                      <td>
+                        <button type="submit" class="btn btn-danger">
+                          Delete
+                        </button>
+                        <button type="submit" class="btn btn-success ms-1">
+                          Finished
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
-    </main>
-
+      </div>
+    </section>
     <script src="js/main.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

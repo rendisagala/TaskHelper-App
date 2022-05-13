@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controller/controller");
-const auth = require("../middleware/verifyToken");
+const authController = require("../controller/authController");
+const indexController = require("../controller/indexController");
 
-router.route("/").get(auth.verifyToken, controller.showIndex);
-router.route("/login").get(controller.showLogin).post(controller.login);
-router.route("/index").get(auth.verifyToken, controller.showIndex);
+router.route("/").get(indexController.showIndex);
+router.route("/login").get(authController.showLogin).post(authController.login);
+router.route("/index").get(indexController.showIndex);
 router
   .route("/register")
-  .get(controller.showRegister)
-  .post(controller.register);
+  .get(authController.showRegister)
+  .post(authController.register);
 
-router.route("/logout").delete(controller.logout);
+router.route("/logout").get(authController.logout);
 
 module.exports = router;
