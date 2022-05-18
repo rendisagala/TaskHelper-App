@@ -31,7 +31,7 @@ exports.register = [
       const username = req.body.username;
       const password = req.body.password;
       // validate
-      const { error } = await validation(req.body);
+      const { error } = await validationRegister(req.body);
 
       const userExist = await User.find({ username: username });
       const emailExist = await User.find({ email: email });

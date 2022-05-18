@@ -25,83 +25,39 @@
     <style></style>
   </head>
   <body>
-    <nav class="navbar navbar-light" style="background-color: #eee">
-      <span class="navbar-brand mb-0 h1 px-2"
+    <nav class="navbar navbar-light">
+      <span class="navbar-brand mb-0 h1 px-2 text-light"
         > Welcome,<strong>    
           <%= username[i] %>
         </strong>!<% } %>
       </span>
       <form class="form-inline px-2" method="PUT" action="/logout">
-        <button class="btn btn-outline-success" type="submit">Log Out</button>
+        <button class="btn btn-outline-danger text-light" type="submit">Log Out</button>
       </form>
     </nav>
-    <section class="vh-100 full-height" style="background-color: #eee">
-      <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col col-lg-9 col-xl-7">
-            <div class="card rounded-3">
-              <div class="card-body p-4">
-                <h4 class="text-center my-3 pb-3 brand-wrapper">TaskHelper.</h4>
-
-                <form
-                  class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2" method="POST" action="/addtask"
-                >
-                  <div class="col-12">
-                    <div class="form-outline">
-                      <input type="text" id="task" for="task" class="form-control" name="task"/>
-                      <label class="form-label" for="form1"
-                        >Enter a task here</label
-                      >
-                    </div>
-                  </div>
-
-                  <div class="col-12">
-                    <button type="submit" class="btn btn-primary mb-lg-4"  >
-                      Save
-                    </button>
-                  </div>
-
-                 
-                </form>
-
-                <table class="table mb-4">
-                 
-                  <thead>
-                    <tr>
-                      <th scope="col">Date</th>
-                      <th scope="col">Todo item</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% for (let i =0; i <data.length; i++) { %>
-                    <tr>
-                      <th scope="row"> <%= data[i].date %></th>
-                      <td> <%= data[i].name %></td>
-                      <td> <%= data[i].status %></td>
-                     
-                      <td>
-                        <div class="row">
-                        <form action="/removetask" method="POST" class="col-4">
-                        <button type="submit" class="btn btn-danger" formaction="/removetask">
-                          Delete
-                        </button></form>
-                        <form action="/finishtask" method="POST" class="col-4">
-                        <button type="submit" class="btn btn-success" formaction="/finishtask">
-                          Finished
-                        </button></form></div>
-                      </td>
-                    </tr>
-                     <% } %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="wrapper">
+      <header>TaskHelper.</header>
+    
+        <form action="/addtask" method="POST" class="inputField">
+        <input type="text" placeholder="Add your new todo"  id="task" for="task" name="task">
+        <button type="submit"><i class="fas fa-plus"></i></button></form>
+     
+      <ul class="todoList">
+        <% if(data){ %> 
+        <% for (let i =0; i <data.length; i++) { %>
+          <tr>
+            <li> <%= data[i].name %> <strong>(<%= data[i].date %> )</strong> <form class="icon" action="/removetask" method="post"><button type="submit" class="btn icon"><i class="fas fa-trash"></i></button></form></li>
+              </tr>
+              <% } %>
+              <% } %>
+      </ul>
+      
+      <div class="footer">
+        <span>You have <span class="pendingTasks"><%=data.length %> </span> pending tasks</span>
+        <form action="/removealltask" method="post">
+        <button type="submit" class="active">Clear All</button></form>
       </div>
-    </section>
+    </div>
     <script src="js/main.js"></script>
 
     <script

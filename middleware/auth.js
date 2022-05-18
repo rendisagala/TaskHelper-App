@@ -1,4 +1,3 @@
-const e = require("connect-flash");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 

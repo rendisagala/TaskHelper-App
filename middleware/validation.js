@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const validation = (data) => {
+const validationRegister = (data) => {
   const schema = Joi.object({
     username: Joi.string().min(3).required(),
     password: Joi.string().min(8).required(),
@@ -9,5 +9,12 @@ const validation = (data) => {
   const validationResult = schema.validate(data);
   return validationResult;
 };
+const validationTask = (data) => {
+  const schema = Joi.object({
+    task: Joi.string().min(1).required(),
+  });
+  const validationResult = schema.validate(data);
+  return validationResult;
+};
 
-module.exports = { validation };
+module.exports = { validationRegister, validationTask };

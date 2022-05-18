@@ -3,6 +3,7 @@ const Task = require("../models/tasks");
 const { v4: uuidv4 } = require("uuid");
 const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
+const { validationTask } = require("../middleware/validation");
 
 exports.showIndex = [
   auth,
@@ -10,7 +11,6 @@ exports.showIndex = [
     Task.findOne({ username: req.username })
       .lean()
       .exec(function (err, data) {
-        console.log(data.task);
         req.flash("username", req.username);
         res.render("index", {
           username: req.flash("username"),
@@ -22,30 +22,36 @@ exports.showIndex = [
 
 exports.addTask = [
   auth,
-  (req, res) => {
-    const addTask = Task.findOneAndUpdate(
-      { username: req.username },
-      {
-        $push: {
-          task: {
-            id: uuidv4(),
-            name: req.body.task,
-            done: false,
-            date: today.toLocaleDateString(),
-            status: "in progress",
+  async (req, res) => {
+    const { error } = await validationTask(req.body);
+    if (error) {
+      console.log(error.details[0].message);
+      return res.redirect("/index");
+    } else {
+      const addTask = Task.findOneAndUpdate(
+        { username: req.username },
+        {
+          $push: {
+            task: {
+              id: uuidv4(),
+              name: req.body.task,
+              done: false,
+              date: today.toLocaleDateString(),
+              status: "in progress",
+            },
           },
         },
-      },
-      (error, success) => {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log(success);
+        (error, data) => {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log(data);
+          }
         }
-      }
-    );
+      );
 
-    res.redirect("/index");
+      return res.redirect("/index");
+    }
   },
 ];
 exports.removeTask = [
@@ -54,7 +60,7 @@ exports.removeTask = [
     res.redirect("/index");
   },
 ];
-exports.finishTask = [
+exports.removealltask = [
   auth,
   (req, res) => {
     res.redirect("/index");
