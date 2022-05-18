@@ -31,7 +31,7 @@
             <div class="intro-content-wrapper">
               <h1 class="intro-title">Welcome to TaskHelper!</h1>
               <p class="intro-text">TaskHelper is a website that will help you manage list of the tasks that you have to do, or things that you want to do.</p>
-              <a href="https://github.com/rendisagala/TaskHelper-App" class="btn btn-read-more">Read more</a>
+              <a href="https://github.com/rendisagala/TaskHelper-App" target="_blank" class="btn btn-read-more">Read more</a>
             </div>
             <div class="intro-section-footer">
               <na class="footer-nav">
@@ -53,7 +53,7 @@
          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
        </div>
          <% } %>
-              <form action="#!" action="/register"
+              <form  action="/register"
               method="POST">
                 <div class="form-group">
                   <label for="email" class="sr-only">Email</label>
@@ -68,10 +68,10 @@
                 </div>
                 <div class="form-group mb-3">
                   <label for="password" class="sr-only">Password</label>
-                  <input type="password" name="password" id="password" class="form-control" placeholder="Password" for="password">
+                  <input type="password" name="password" id="password" class="form-control" placeholder="Password" for="password"  autocomplete="off">
                 </div>
                 <div class="d-flex justify-content-between align-items-center mb-5">
-                  <input name="register" id="register" class="btn login-btn" type="submit" value="Sign Up">
+                  <button  id="register" class="btn login-btn" type="submit" >Sign Up</button>
                 
                 </div>
               </form>           

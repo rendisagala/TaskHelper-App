@@ -1,7 +1,9 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
+const timeElapsed = Date.now();
+const today = new Date(timeElapsed);
 
-mongoose.connect(process.env.DB_URL_USER, {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -25,9 +27,9 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   created: {
-    type: Date,
+    type: String,
     required: true,
-    default: Date.now(),
+    default: today.toLocaleDateString(),
   },
 });
 

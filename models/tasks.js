@@ -1,7 +1,9 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
+const timeElapsed = Date.now();
+const today = new Date(timeElapsed);
 
-mongoose.connect(process.env.DB_URL_USER, {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -10,12 +12,36 @@ db.on("error", (error) => {
   console.log(error);
 });
 const taskSchema = new mongoose.Schema({
-  task: {
+  username: {
     type: String,
-    trim: true,
+    required: true,
   },
-  done: {
-    type: Boolean,
-    default: false,
+  task: {
+    id: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    done: {
+      type: Boolean,
+      default: false,
+    },
+    date: {
+      type: String,
+      required: true,
+      default: today.toLocaleDateString(),
+    },
+    status: {
+      type: String,
+      required: true,
+      default: "in progress",
+    },
   },
 });
+
+const Task = mongoose.model("Task", taskSchema);
+
+module.exports = Task;

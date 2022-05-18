@@ -1,4 +1,5 @@
 const User = require("../models/users");
+const Task = require("../models/tasks");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
@@ -44,16 +45,14 @@ exports.register = [
         req.flash("error", "Username already exist");
         res.redirect("/register");
       } else {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         const inputUser = new User({
           id: uuidv4(),
-          email: req.body.email,
-          username: req.body.username,
+          email: email,
+          username: username,
           password: hashedPassword,
-          created: Date.now().toString(),
         });
-
         inputUser.save((err, user) => {
           if (err) {
             return res.redirect("/register");
@@ -61,6 +60,10 @@ exports.register = [
           console.log(user);
           return res.redirect("/login");
         });
+        const taskUser = new Task({
+          username: username,
+        });
+        taskUser.save();
       }
     } catch (error) {
       console.log(error);
@@ -77,7 +80,7 @@ exports.login = [
       if (!(username && password)) {
         req.flash("error", "Please provide username and password");
       }
-      // Validate if user exist in our database
+      // Validate if user exist in mongodb
       const user = await User.findOne({ username });
 
       if (user && (await bcrypt.compare(password, user.password))) {
@@ -87,13 +90,11 @@ exports.login = [
           process.env.SECRET_TOKEN,
           { algorithm: "HS256", expiresIn: "2h" }
         );
-        console.log(token);
         console.log("LOGGED IN");
         res.cookie("access_token", token, {
           httpOnly: true,
           secure: true,
         });
-
         return res.redirect("/index");
       } else {
         req.flash("error", "Username or password incorrect");
