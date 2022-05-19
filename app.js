@@ -30,7 +30,7 @@ app.use(
 );
 app.use(flash());
 //route prefix
-app.use(routes);
+app.use("/", routes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
