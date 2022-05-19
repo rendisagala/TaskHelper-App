@@ -46,7 +46,7 @@
         <% if(data){ %> 
         <% for (let i =0; i <data.length; i++) { %>
           <tr>
-            <li> <%= data[i].name %> <strong>(<%= data[i].date %> )</strong> <form class="icon" action="/removetask" method="post"><button type="submit" class="btn icon"><i class="fas fa-trash"></i></button></form></li>
+            <li> <%= data[i].name %> <strong>(<%= data[i].date %> )</strong> <form class="icon" action="/removetask/<%= data[i].id %>" method="post"><button type="submit" class="btn icon"><i class="fas fa-trash"></i></button></form></li>
               </tr>
               <% } %>
               <% } %>

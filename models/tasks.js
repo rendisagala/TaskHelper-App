@@ -25,19 +25,10 @@ const taskSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    done: {
-      type: Boolean,
-      default: false,
-    },
     date: {
       type: String,
       required: true,
       default: today.toLocaleDateString(),
-    },
-    status: {
-      type: String,
-      required: true,
-      default: "in progress",
     },
   },
 });

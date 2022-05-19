@@ -35,9 +35,7 @@ exports.addTask = [
             task: {
               id: uuidv4(),
               name: req.body.task,
-              done: false,
               date: today.toLocaleDateString(),
-              status: "in progress",
             },
           },
         },
@@ -57,12 +55,34 @@ exports.addTask = [
 exports.removeTask = [
   auth,
   (req, res) => {
-    res.redirect("/index");
+    const removeTask = Task.updateOne(
+      { username: req.username },
+      { $pull: { task: { id: { $in: req.params.id } } } },
+      (error, data) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(data);
+          res.redirect("/index");
+        }
+      }
+    );
   },
 ];
-exports.removealltask = [
+exports.removeAllTask = [
   auth,
   (req, res) => {
-    res.redirect("/index");
+    const removeAllTask = Task.update(
+      { username: req.username },
+      { $set: { task: [] } },
+      (error, data) => {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(data);
+          res.redirect("/index");
+        }
+      }
+    );
   },
 ];
