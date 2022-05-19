@@ -14,6 +14,7 @@ body {
   height: 100vh;
   /* overflow: hidden; */
   padding: 10px;
+  /* https://pixabay.com/images/id-1431333/ */
   background-image: url(../img/the-thinker-1431333.jpg);
   -webkit-background-size: cover;
   -moz-background-size: cover;
