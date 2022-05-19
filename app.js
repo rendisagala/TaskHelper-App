@@ -6,6 +6,7 @@ const sessionStorage = new session.MemoryStore();
 const flash = require("connect-flash");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const sslRedirect = require("heroku-ssl-redirect");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -29,6 +30,7 @@ app.use(
   })
 );
 app.use(flash());
+app.use(sslRedirect());
 //route prefix
 app.use(routes);
 
