@@ -35,6 +35,13 @@ body {
   font-size: 30px;
   font-weight: 600;
 }
+.wrapper header span:hover {
+  cursor: crosshair;
+  color: white;
+  background-color: #721ce3;
+  font-size: 30px;
+  font-weight: 600;
+}
 .wrapper .inputField {
   margin: 20px 0;
   width: 100%;

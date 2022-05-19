@@ -15,6 +15,8 @@ exports.showIndex = [
         res.render("index", {
           username: req.flash("username"),
           data: data.task,
+          error: req.flash("error"),
+          success: req.flash("success"),
         });
       });
   },
@@ -25,7 +27,7 @@ exports.addTask = [
   async (req, res) => {
     const { error } = await validationTask(req.body);
     if (error) {
-      console.log(error.details[0].message);
+      req.flash("error", error.details[0].message);
       return res.redirect("/index");
     } else {
       const addTask = Task.findOneAndUpdate(
@@ -43,12 +45,12 @@ exports.addTask = [
           if (error) {
             console.log(error);
           } else {
+            req.flash("success", "Task Added!");
             console.log(data);
+            return res.redirect("/index");
           }
         }
       );
-
-      return res.redirect("/index");
     }
   },
 ];
@@ -62,6 +64,7 @@ exports.removeTask = [
         if (error) {
           console.log(error);
         } else {
+          req.flash("success", "Task Removed!");
           console.log(data);
           res.redirect("/index");
         }
@@ -72,13 +75,14 @@ exports.removeTask = [
 exports.removeAllTask = [
   auth,
   (req, res) => {
-    const removeAllTask = Task.update(
+    const removeAllTask = Task.updateOne(
       { username: req.username },
       { $set: { task: [] } },
       (error, data) => {
         if (error) {
           console.log(error);
         } else {
+          req.flash("success", "All Task Removed!");
           console.log(data);
           res.redirect("/index");
         }
