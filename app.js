@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(
   session({
-    name: "sessionid",
+    name: process.env.SESSION_NAME,
     secret: process.env.SECRET_SESSION,
     cookie: { httpOnly: true, maxAge: 60000 },
     resave: false,
@@ -32,5 +32,5 @@ app.use(flash());
 app.use(routes);
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:3000`);
 });
