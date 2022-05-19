@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // ejs setup
 app.set("view engine", "ejs");
@@ -31,6 +32,6 @@ app.use(flash());
 //route prefix
 app.use(routes);
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server is running on http://localhost:3000`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

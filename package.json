@@ -1,9 +1,14 @@
 {
-  "name": "simple-login-system",
+  "name": "taskhelper",
   "version": "1.0.0",
-  "description": "simple login system",
+  "description": "TaskHelper",
   "main": "app.js",
-  "scripts": {},
+  "engines": {
+    "node": "16.13.2"
+  },
+  "scripts": {
+    "start": "nodemon app.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rendisagala/MERN-app.git"
