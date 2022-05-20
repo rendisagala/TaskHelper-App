@@ -92,7 +92,6 @@ exports.login = [
         );
         console.log("LOGGED IN");
         res.cookie("access_token", token, {
-          httpOnly: true,
           secure: true,
         });
         return res.redirect("/index");
