@@ -18,6 +18,7 @@
   "bugs": {
     "url": "https://github.com/rendisagala/MERN-app/issues"
   },
+  "proxy": "http://localhost:3000",
   "homepage": "https://github.com/rendisagala/MERN-app#readme",
   "dependencies": {
     "axios": "^0.27.2",
