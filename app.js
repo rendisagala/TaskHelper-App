@@ -6,6 +6,7 @@ const sessionStorage = new session.MemoryStore();
 const flash = require("connect-flash");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const MongoStore = require("connect-mongo");
 
 const app = express();
 
@@ -20,13 +21,14 @@ app.use(
   session({
     name: process.env.SESSION_NAME,
     secret: process.env.SECRET_SESSION,
-    cookie: { httpOnly: true, maxAge: 60000 },
+    cookie: { maxAge: 60000 },
     resave: false,
     saveUninitialized: false,
     rolling: true,
     store: sessionStorage,
   })
 );
+
 app.use(flash());
 //route prefix
 app.use(routes);
