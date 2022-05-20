@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const { validation } = require("../middleware/validation");
+const { validationRegister } = require("../middleware/validation");
 const auth = require("../middleware/auth");
 
 exports.showLogin = [

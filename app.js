@@ -6,7 +6,7 @@ const sessionStorage = new session.MemoryStore();
 const flash = require("connect-flash");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const MongoStore = require("connect-mongo");
+import sslRedirect from "heroku-ssl-redirect";
 
 const app = express();
 
@@ -28,7 +28,7 @@ app.use(
     store: sessionStorage,
   })
 );
-
+app.use(sslRedirect());
 app.use(flash());
 //route prefix
 app.use(routes);
