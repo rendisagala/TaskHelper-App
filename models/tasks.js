@@ -3,14 +3,20 @@ const mongoose = require("mongoose");
 const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
 
-mongoose.connect(process.env.DB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
-db.on("error", (error) => {
-  console.log(error);
-});
+const connectDatabase = async () => {
+  try {
+    mongoose.set("useNewUrlParser", true);
+
+    await mongoose.connect(process.env.DB_URL);
+
+    console.log("connected to database");
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+connectDatabase();
+
 const taskSchema = new mongoose.Schema({
   username: {
     type: String,
