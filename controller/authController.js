@@ -7,23 +7,6 @@ require("dotenv").config();
 const { validationRegister } = require("../middleware/validation");
 const auth = require("../middleware/auth");
 
-exports.showLogin = [
-  (req, res) => {
-    res.render("login", {
-      error: req.flash("error"),
-      success: req.flash("success"),
-    });
-  },
-];
-
-exports.showRegister = [
-  (req, res) => {
-    res.render("register", {
-      error: req.flash("error"),
-    });
-  },
-];
-
 exports.register = [
   async (req, res) => {
     try {
@@ -53,6 +36,10 @@ exports.register = [
           username: username,
           password: hashedPassword,
         });
+        const taskUser = new Task({
+          username: username,
+        });
+        taskUser.save();
         inputUser.save((err, user) => {
           if (err) {
             return res.redirect("/register");
@@ -60,13 +47,10 @@ exports.register = [
           console.log(user);
           return res.redirect("/login");
         });
-        const taskUser = new Task({
-          username: username,
-        });
-        taskUser.save();
       }
     } catch (error) {
       console.log(error);
+      return res.redirect("/register");
     }
   },
 ];
@@ -102,6 +86,23 @@ exports.login = [
     } catch (err) {
       console.log(err);
     }
+  },
+];
+
+exports.showLogin = [
+  (req, res) => {
+    res.render("login", {
+      error: req.flash("error"),
+      success: req.flash("success"),
+    });
+  },
+];
+
+exports.showRegister = [
+  (req, res) => {
+    res.render("register", {
+      error: req.flash("error"),
+    });
   },
 ];
 exports.logout = [

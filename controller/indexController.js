@@ -11,13 +11,17 @@ exports.showIndex = [
     Task.findOne({ username: req.username })
       .lean()
       .exec(function (err, data) {
-        req.flash("username", req.username);
-        res.render("index", {
-          username: req.flash("username"),
-          data: data.task,
-          error: req.flash("error"),
-          success: req.flash("success"),
-        });
+        if (data) {
+          req.flash("username", req.username);
+          res.render("index", {
+            username: req.flash("username"),
+            data: data.task,
+            error: req.flash("error"),
+            success: req.flash("success"),
+          });
+        } else {
+          return res.redirect("/login");
+        }
       });
   },
 ];

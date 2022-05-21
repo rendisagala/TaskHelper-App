@@ -2,6 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
+const { v4: uuidv4 } = require("uuid");
 
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
@@ -16,21 +17,25 @@ const taskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  task: {
-    id: {
-      type: String,
-      required: true,
+  task: [
+    {
+      id: {
+        type: String,
+        required: true,
+        default: uuidv4(),
+      },
+      name: {
+        type: String,
+        required: true,
+        default: "Example Task",
+      },
+      date: {
+        type: String,
+        required: true,
+        default: today.toLocaleDateString(),
+      },
     },
-    name: {
-      type: String,
-      required: true,
-    },
-    date: {
-      type: String,
-      required: true,
-      default: today.toLocaleDateString(),
-    },
-  },
+  ],
 });
 
 const Task = mongoose.model("Task", taskSchema);

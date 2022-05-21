@@ -69,7 +69,8 @@
       </ul>
       
       <div class="footer">
-        <span>You have <span class="pendingTasks"><%=data.length %> </span> pending tasks</span>
+        <% if(data){ %> 
+        <span>You have <span class="pendingTasks"><%=data.length %> <% } %> </span> pending tasks</span>
         <form action="/removealltask" method="post">
         <button type="submit" class="active">Clear All</button></form>
       </div>

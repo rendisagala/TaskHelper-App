@@ -11,7 +11,7 @@ const validationRegister = (data) => {
 };
 const validationTask = (data) => {
   const schema = Joi.object({
-    task: Joi.string().min(1).required(),
+    task: Joi.string().min(1),
   });
   const validationResult = schema.validate(data);
   return validationResult;
