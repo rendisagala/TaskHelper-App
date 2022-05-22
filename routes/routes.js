@@ -9,7 +9,6 @@ router
   .route("/register")
   .get(authController.showRegister)
   .post(authController.register);
-
 router.route("/index").get(indexController.showIndex);
 router.route("/addtask").post(indexController.addTask);
 router.route("/removetask").post(indexController.removeTask);

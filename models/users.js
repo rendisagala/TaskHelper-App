@@ -3,24 +3,13 @@ const mongoose = require("mongoose");
 const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
 
-// mongoose.connect(process.env.DB_URL, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-// const db = mongoose.connection;
-// db.on("error", (error) => {
-//   console.log(error);
-// });
-
-const { MongoClient, ServerApiVersion } = require("mongodb");
-const client = new MongoClient(process.env.DB_URL, {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  serverApi: ServerApiVersion.v1,
 });
-client.connect((err) => {
-  const collection = client.db("taskhelper").collection("users");
-  client.close();
+const db = mongoose.connection;
+db.on("error", (error) => {
+  console.log(error);
 });
 
 const userSchema = new mongoose.Schema({
