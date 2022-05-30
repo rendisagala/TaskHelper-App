@@ -6,7 +6,6 @@ const sessionStorage = new session.MemoryStore();
 const flash = require("connect-flash");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const MongoStore = require("connect-mongo");
 
 const app = express();
 
