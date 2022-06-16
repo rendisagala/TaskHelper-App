@@ -26,7 +26,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/rendisagalaa/TaskHelper-App">
+  <a href="https://github.com/rendisagala/TaskHelper-App">
     <img src="public/img/thethinker.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -35,14 +35,14 @@
   <p align="center">
     TaskHelper is a website that will help you manage list of the tasks that you have to do, or things that you want to do.
     <br />
-    <a href="https://github.com/rendisagalaa/TaskHelper-App"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/rendisagala/TaskHelper-App"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/rendisagalaa/TaskHelper-App">View Demo</a>
+    <a href="https://github.com/rendisagala/TaskHelper-App">View Demo</a>
     ·
-    <a href="https://github.com/rendisagalaa/TaskHelper-App/issues">Report Bug</a>
+    <a href="https://github.com/rendisagala/TaskHelper-App/issues">Report Bug</a>
     ·
-    <a href="https://github.com/rendisagalaa/TaskHelper-App/issues">Request Feature</a>
+    <a href="https://github.com/rendisagala/TaskHelper-App/issues">Request Feature</a>
   </p>
 </div>
 
@@ -76,9 +76,9 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `rendisagalaa`, `TaskHelper-App`, `email_handle`, `rendi-anjuma-sagala-a3b2421b6/`, `email_client`, `email`, `TaskHelper App`, `TaskHelper is a website that will help you manage list of the tasks that you have to do, or things that you want to do.`
+TaskHelper is a website that will help you manage list of the tasks that you have to do, or things that you want to do.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -111,7 +111,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/rendisagalaa/TaskHelper-App.git
+   git clone https://github.com/rendisagala/TaskHelper-App.git
    ```
 2. Install NPM packages
    ```sh
@@ -146,7 +146,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Email - [@email_handle](mailto:rendisagala19@gmail.com) - rendisagala19@gmail.com
 
-Project Link: [https://github.com/rendisagalaa/TaskHelper-App](https://github.com/rendisagalaa/TaskHelper-App)
+Project Link: [https://github.com/rendisagala/TaskHelper-App](https://github.com/rendisagala/TaskHelper-App)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -154,25 +154,29 @@ Project Link: [https://github.com/rendisagalaa/TaskHelper-App](https://github.co
 
 ## Acknowledgments
 
-- []()
-- []()
-- []()
+- [Choose an Open Source License](https://choosealicense.com)
+- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
+- [Malven's Grid Cheatsheet](https://grid.malven.co/)
+- [Img Shields](https://shields.io)
+- [Heroku Pages](https://geroku.com)
+- [Font Awesome](https://fontawesome.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/rendisagalaa/TaskHelper-App.svg?style=for-the-badge
-[contributors-url]: https://github.com/rendisagalaa/TaskHelper-App/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/rendisagalaa/TaskHelper-App.svg?style=for-the-badge
-[forks-url]: https://github.com/rendisagalaa/TaskHelper-App/network/members
-[stars-shield]: https://img.shields.io/github/stars/rendisagalaa/TaskHelper-App.svg?style=for-the-badge
-[stars-url]: https://github.com/rendisagalaa/TaskHelper-App/stargazers
-[issues-shield]: https://img.shields.io/github/issues/rendisagalaa/TaskHelper-App.svg?style=for-the-badge
-[issues-url]: https://github.com/rendisagalaa/TaskHelper-App/issues
-[license-shield]: https://img.shields.io/github/license/rendisagalaa/TaskHelper-App.svg?style=for-the-badge
-[license-url]: https://github.com/rendisagalaa/TaskHelper-App/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/rendisagala/TaskHelper-App.svg?style=for-the-badge
+[contributors-url]: https://github.com/rendisagala/TaskHelper-App/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/rendisagala/TaskHelper-App.svg?style=for-the-badge
+[forks-url]: https://github.com/rendisagala/TaskHelper-App/network/members
+[stars-shield]: https://img.shields.io/github/stars/rendisagala/TaskHelper-App.svg?style=for-the-badge
+[stars-url]: https://github.com/rendisagala/TaskHelper-App/stargazers
+[issues-shield]: https://img.shields.io/github/issues/rendisagala/TaskHelper-App.svg?style=for-the-badge
+[issues-url]: https://github.com/rendisagala/TaskHelper-App/issues
+[license-shield]: https://img.shields.io/github/license/rendisagala/TaskHelper-App.svg?style=for-the-badge
+[license-url]: https://github.com/rendisagala/TaskHelper-App/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/rendi-anjuma-sagala-a3b2421b6/
 [product-screenshot]: public/img/TaskHelper%20-%20Login.png
