@@ -26,7 +26,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/rendisagala/TaskHelper-App">
+  <a href="https://taskhelper-app.herokuapp.com/">
     <img src="public/img/thethinker.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -38,7 +38,7 @@
     <a href="https://github.com/rendisagala/TaskHelper-App"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/rendisagala/TaskHelper-App">View Demo</a>
+    <a href="https://taskhelper-app.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/rendisagala/TaskHelper-App/issues">Report Bug</a>
     ·
