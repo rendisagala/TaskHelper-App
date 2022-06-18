@@ -91,18 +91,28 @@ exports.login = [
 
 exports.showLogin = [
   (req, res) => {
-    res.render("login", {
-      error: req.flash("error"),
-      success: req.flash("success"),
-    });
+    const token = req.cookies.access_token;
+    if (!token) {
+      res.render("login", {
+        error: req.flash("error"),
+        success: req.flash("success"),
+      });
+    } else {
+      return res.redirect("/index");
+    }
   },
 ];
 
 exports.showRegister = [
   (req, res) => {
-    res.render("register", {
-      error: req.flash("error"),
-    });
+    const token = req.cookies.access_token;
+    if (!token) {
+      res.render("register", {
+        error: req.flash("error"),
+      });
+    } else {
+      return res.redirect("/index");
+    }
   },
 ];
 exports.logout = [

@@ -11,7 +11,7 @@ const auth = (req, res, next) => {
     req.username = data.username;
     return next();
   } catch {
-    return res.redirect("/login");
+    return res.redirect("/");
   }
 };
 
